@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <meta name="theme-color" content="#0b1020">
+
+    <title>CEO COIN</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         LOADING
+    ========================== -->
+    <div id="loadingScreen" class="screen active">
+        <div class="loading-box">
+            <div class="logo-big">₿</div>
+            <h1>CEO COIN</h1>
+            <p>Build • Upgrade • Earn</p>
+
+            <div class="loading-bar">
+                <div id="loadingProgress"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- =========================
+         LOGIN
+    ========================== -->
+    <div id="loginPage" class="screen hidden">
+
+        <div class="auth-container">
+
+            <div class="brand">
+                <div class="logo">₿</div>
+                <h1>CEO COIN</h1>
+                <p>Become the next business tycoon.</p>
+            </div>
+
+            <div class="auth-card">
+
+                <h2>Welcome Back</h2>
+                <p class="muted">Login untuk melanjutkan bisnis kamu.</p>
+
+                <label>Username</label>
+                <input
+                    type="text"
+                    id="loginUsername"
+                    placeholder="Masukkan username"
+                    autocomplete="username"
+                >
+
+                <label>Password</label>
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Masukkan password"
+                    autocomplete="current-password"
+                >
+
+                <button id="loginBtn" class="primary-btn">
+                    LOGIN
+                </button>
+
+                <button id="guestBtn" class="secondary-btn">
+                    MAIN SEBAGAI GUEST
+                </button>
+
+                <p class="auth-switch">
+                    Belum punya akun?
+                    <button id="showRegisterBtn">Register</button>
+                </p>
+
+                <div id="loginMessage" class="message"></div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         REGISTER
+    ========================== -->
+    <div id="registerPage" class="screen hidden">
+
+        <div class="auth-container">
+
+            <div class="brand">
+                <div class="logo">₿</div>
+                <h1>CEO COIN</h1>
+                <p>Create your business empire.</p>
+            </div>
+
+            <div class="auth-card">
+
+                <h2>Create Account</h2>
+                <p class="muted">Buat akun CEO baru.</p>
+
+                <label>Username</label>
+                <input
+                    type="text"
+                    id="registerUsername"
+                    placeholder="Username"
+                    maxlength="20"
+                >
+
+                <label>Password</label>
+                <input
+                    type="password"
+                    id="registerPassword"
+                    placeholder="Minimal 6 karakter"
+                >
+
+                <label>Konfirmasi Password</label>
+                <input
+                    type="password"
+                    id="registerConfirmPassword"
+                    placeholder="Ulangi password"
+                >
+
+                <button id="registerBtn" class="primary-btn">
+                    CREATE ACCOUNT
+                </button>
+
+                <p class="auth-switch">
+                    Sudah punya akun?
+                    <button id="showLoginBtn">Login</button>
+                </p>
+
+                <div id="registerMessage" class="message"></div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MAIN GAME
+    ========================== -->
+    <div id="gamePage" class="game-page hidden">
+
+        <!-- TOP BAR -->
+        <header class="topbar">
+
+            <div class="top-brand">
+                <div class="mini-logo">₿</div>
+                <span>CEO COIN</span>
+            </div>
+
+            <div class="player-info">
+                <span id="playerName">Guest</span>
+                <span id="saveStatus" class="save-status">Offline</span>
+            </div>
+
+            <button id="logoutBtn" class="logout-btn">
+                Logout
+            </button>
+
+        </header>
+
+
+        <!-- STATS -->
+        <section class="stats">
+
+            <div class="stat-card">
+                <span>COIN</span>
+                <strong id="coinDisplay">0</strong>
+            </div>
+
+            <div class="stat-card">
+                <span>LEVEL</span>
+                <strong id="levelDisplay">1</strong>
+            </div>
+
+            <div class="stat-card">
+                <span>INCOME</span>
+                <strong id="incomeDisplay">0/s</strong>
+            </div>
+
+            <div class="stat-card">
+                <span>EXP</span>
+                <strong id="expDisplay">0/100</strong>
+            </div>
+
+        </section>
+
+
+        <!-- GAME -->
+        <main class="game-area">
+
+            <div class="game-wrapper">
+
+                <canvas id="gameCanvas"></canvas>
+
+                <div class="floating-message" id="floatingMessage">
+                    +0 COIN
+                </div>
+
+                <div class="game-hint">
+                    TAP / KLIK KANTOR UNTUK MENGHASILKAN COIN
+                </div>
+
+            </div>
+
+        </main>
+
+
+        <!-- BOTTOM NAV -->
+        <nav class="bottom-nav">
+
+            <button class="nav-btn active" data-panel="gamePanel">
+                <span>🏢</span>
+                <small>Game</small>
+            </button>
+
+            <button class="nav-btn" data-panel="upgradePanel">
+                <span>⚡</span>
+                <small>Upgrade</small>
+            </button>
+
+            <button class="nav-btn" data-panel="businessPanel">
+                <span>💼</span>
+                <small>Business</small>
+            </button>
+
+            <button class="nav-btn" data-panel="leaderboardPanel">
+                <span>🏆</span>
+                <small>Rank</small>
+            </button>
+
+            <button class="nav-btn" data-panel="profilePanel">
+                <span>👤</span>
+                <small>Profile</small>
+            </button>
+
+        </nav>
+
+
+        <!-- =========================
+             PANELS
+        ========================== -->
+
+        <div id="upgradePanel" class="overlay-panel hidden">
+
+            <div class="panel-header">
+                <h2>⚡ Upgrade</h2>
+                <button class="close-panel">×</button>
+            </div>
+
+            <div id="upgradeList" class="item-list"></div>
+
+        </div>
+
+
+        <div id="businessPanel" class="overlay-panel hidden">
+
+            <div class="panel-header">
+                <h2>💼 Business</h2>
+                <button class="close-panel">×</button>
+            </div>
+
+            <div id="businessList" class="item-list"></div>
+
+        </div>
+
+
+        <div id="leaderboardPanel" class="overlay-panel hidden">
+
+            <div class="panel-header">
+                <h2>🏆 Leaderboard</h2>
+                <button class="close-panel">×</button>
+            </div>
+
+            <button id="refreshLeaderboard" class="secondary-btn">
+                Refresh
+            </button>
+
+            <div id="leaderboardList" class="leaderboard-list">
+                Loading...
+            </div>
+
+        </div>
+
+
+        <div id="profilePanel" class="overlay-panel hidden">
+
+            <div class="panel-header">
+                <h2>👤 Profile</h2>
+                <button class="close-panel">×</button>
+            </div>
+
+            <div class="profile-card">
+
+                <div class="profile-avatar">₿</div>
+
+                <h2 id="profileUsername">Guest</h2>
+
+                <p>ID: <span id="profileId">-</span></p>
+
+                <div class="profile-stat">
+                    <span>Level</span>
+                    <strong id="profileLevel">1</strong>
+                </div>
+
+                <div class="profile-stat">
+                    <span>Total Coin</span>
+                    <strong id="profileCoin">0</strong>
+                </div>
+
+                <div class="profile-stat">
+                    <span>Total Income</span>
+                    <strong id="profileIncome">0</strong>
+                </div>
+
+                <div class="profile-stat">
+                    <span>Play Time</span>
+                    <strong id="profilePlayTime">0 menit</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- TOAST -->
+    <div id="toast" class="toast">
+        Message
+    </div>
+
+
+    <!-- THREE.JS -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.180.0/build/three.min.js"></script>
+
+    <!-- GAME -->
+    <script src="database.js"></script>
+    <script src="game.js"></script>
+
+</body>
+</html>
