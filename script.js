@@ -11,7 +11,7 @@
 // GANTI DENGAN URL WEB APP GOOGLE APPS SCRIPT
 
 const API_URL =
-  "PASTE_URL_GOOGLE_APPS_SCRIPT_DI_SINI";
+  "https://script.google.com/macros/s/AKfycbxTUZXG3aYuAgV2o4NRWmn3-FRsC-xlm8X6VjR1OAFkrePSlWGY-YfY6p8jZHf48sDk/exec";
 
 
 // =================================================
